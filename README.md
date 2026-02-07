@@ -27,7 +27,8 @@ Together, these three are the core languages of web development.
      **JavaScript loads questions one by one, creates option buttons dynamically, checks if your answer is correct, and finally shows your score.**
 # Summary:
     **Language used: HTML + CSS + JavaScript**
-    **Execution: Runs directly in a web browser (no extra software needed)**
+    **Execution: Runs directly in a web browser (no extra software needed)** 
+    
 
 Output: A fully interactive quiz game with questions, options, and scoring
 # OTUPUT 
