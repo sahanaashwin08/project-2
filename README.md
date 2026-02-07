@@ -30,7 +30,7 @@ Together, these three are the core languages of web development.
     **Execution: Runs directly in a web browser (no extra software needed)** 
     
 
-Output: A fully interactive quiz game with questions, options, and scoring
+##### program:
 <!DOCTYPE html>
 <html lang="en">
 <head>
