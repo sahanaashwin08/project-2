@@ -35,125 +35,116 @@ Together, these three are the core languages of web development.
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
     }
-
-    .quiz-container {
+    .form-container {
       background: #fff;
-      padding: 20px;
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       width: 400px;
-      text-align: center;
     }
-
     h1 {
+      text-align: center;
+      color: #333;
       margin-bottom: 20px;
     }
-
-    .question {
-      font-size: 1.2em;
-      margin-bottom: 15px;
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #444;
     }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    button {
+    input, select {
+      width: 100%;
       padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
       font-size: 1em;
+    }
+    .gender {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+    .gender label {
+      font-weight: normal;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #66a6ff;
+      color: #fff;
       border: none;
       border-radius: 8px;
+      font-size: 1.1em;
       cursor: pointer;
-      background: #007bff;
-      color: white;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
-
     button:hover {
-      background: #0056b3;
-    }
-
-    #score {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 1.2em;
+      background: #0052cc;
     }
   </style>
 </head>
 <body>
-  <div class="quiz-container">
-    <h1>Quiz Game</h1>
-    <div id="quiz">
-      <div class="question" id="question"></div>
-      <div class="options" id="options"></div>
-    </div>
-    <div id="score"></div>
+  <div class="form-container">
+    <h1>Student Registration</h1>
+    <form id="studentForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="roll">Roll Number:</label>
+      <input type="text" id="roll" required>
+
+      <label for="dept">Department:</label>
+      <select id="dept" required>
+        <option value="">--Select Department--</option>
+        <option value="CSE">Computer Science</option>
+        <option value="ECE">Electronics</option>
+        <option value="MECH">Mechanical</option>
+        <option value="CIVIL">Civil</option>
+      </select>
+
+      <label>Gender:</label>
+      <div class="gender">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" pattern="[0-9]{10}" required placeholder="10-digit number">
+
+      <button type="submit">Register</button>
+    </form>
   </div>
 
   <script>
-    const questions = [
-      {
-        question: "Which language runs in a web browser?",
-        options: ["Java", "C", "Python", "JavaScript"],
-        answer: "JavaScript"
-      },
-      {
-        question: "What does CSS stand for?",
-        options: ["Central Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Creative Style System"],
-        answer: "Cascading Style Sheets"
-      },
-      {
-        question: "What does HTML stand for?",
-        options: ["HyperText Markup Language", "Hyper Transfer Markup Language", "HighText Machine Language", "None of the above"],
-        answer: "HyperText Markup Language"
-      }
-    ];
+    const form = document.getElementById("studentForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const roll = document.getElementById("roll").value;
+      const dept = document.getElementById("dept").value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const contact = document.getElementById("contact").value;
 
-    let currentQuestion = 0;
-    let score = 0;
-
-    function loadQuestion() {
-      if (currentQuestion < questions.length) {
-        document.getElementById("question").textContent = questions[currentQuestion].question;
-        const optionsDiv = document.getElementById("options");
-        optionsDiv.innerHTML = "";
-        questions[currentQuestion].options.forEach(option => {
-          const btn = document.createElement("button");
-          btn.textContent = option;
-          btn.onclick = () => checkAnswer(option);
-          optionsDiv.appendChild(btn);
-        });
-      } else {
-        document.getElementById("quiz").innerHTML = "<h2>Quiz Completed!</h2>";
-        document.getElementById("score").textContent = "Your Score: " + score + "/" + questions.length;
-      }
-    }
-
-    function checkAnswer(selected) {
-      if (selected === questions[currentQuestion].answer) {
-        score++;
-      }
-      currentQuestion++;
-      loadQuestion();
-    }
-
-    // Load first question after DOM ready
-    window.onload = loadQuestion;
+      alert(`✅ Registration Successful!\n\nName: ${name}\nRoll No: ${roll}\nDepartment: ${dept}\nGender: ${gender}\nContact: ${contact}`);
+    });
   </script>
 </body>
 </html>
+
 # OTUPUT 
-  http://127.0.0.1:5500/git/html-css-javascript-website/e-commer-website/index.html
+  http://127.0.0.1:5500/git/html-css-javascript-website/e-commer-website/home.html
